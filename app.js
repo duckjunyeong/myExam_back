@@ -55,6 +55,7 @@ const sessionOption = {
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
   cookie: {
+    maxAge: 60 * 60 * 10000000,
     httpOnly: true,
   },
 };

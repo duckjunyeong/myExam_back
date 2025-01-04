@@ -1,7 +1,7 @@
 const passport = require("passport");
 const local = require("./local");
 const User = require("../models/user");
-const Workspace = require("../models/workspace");
+const ExamTypeList = require("../models/examTypeList");
 
 module.exports = () => {
   passport.serializeUser((user, done) => {
@@ -16,8 +16,8 @@ module.exports = () => {
         attributes: ["id", "nickname", "email"],
         include: [
           {
-            model: Workspace,
-            as: "Workspaces",
+            model: ExamTypeList,
+            as: "ExamTypeLists",
           },
         ],
       });

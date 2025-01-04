@@ -6,7 +6,7 @@ module.exports = class User extends Model {
     return super.init(
       {
         email: {
-          type: DataTypes.STRING(20),
+          type: DataTypes.STRING(40),
           allowNull: false,
           unique: true,
         },
@@ -17,7 +17,7 @@ module.exports = class User extends Model {
         },
 
         password: {
-          type: DataTypes.STRING(20),
+          type: DataTypes.STRING(100),
           allowNull: false,
         },
       },
@@ -33,6 +33,9 @@ module.exports = class User extends Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.ExamList, { foreignKey: "UserId" });
+    db.User.hasMany(db.ExamTypeList, {
+      as: "ExamTypeLists",
+      foreignKey: "UserId",
+    });
   }
 };

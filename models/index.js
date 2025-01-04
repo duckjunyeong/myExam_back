@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 
-const examList = require("./examList");
-const examData = require("./examData");
+const examTypeList = require("./examTypeList");
+const examPaperList = require("./examPaperList");
+const examPaper = require("./examPaper");
 const examResult = require("./examResult");
 const user = require("./user");
 
@@ -16,9 +17,11 @@ const sequelize = new Sequelize(
   config
 );
 
-db.ExamList = examList;
-db.ExamData = examData;
+db.ExamTypeList = examTypeList;
+db.ExamPaperList = examPaperList;
+db.ExamPaper = examPaper;
 db.ExamResult = examResult;
+
 db.User = user;
 
 Object.keys(db).forEach((modelName) => {

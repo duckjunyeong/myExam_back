@@ -14,7 +14,7 @@ module.exports = () => {
       async (email, password, done) => {
         try {
           const user = await User.findOne({
-            where: { email },
+            where: { email: email },
           });
           if (!user) {
             return done(null, false, { reason: "존재하지 않는 이메일입니다!" });

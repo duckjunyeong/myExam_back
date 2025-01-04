@@ -1,7 +1,7 @@
 const DataTypes = require("sequelize");
 const { Model } = DataTypes;
 
-module.exports = class ExamList extends Model {
+module.exports = class ExamPaper extends Model {
   static init(sequelize) {
     return super.init(
       {
@@ -10,10 +10,18 @@ module.exports = class ExamList extends Model {
           allowNull: false,
           unique: true,
         },
+        choice: {
+          type: DataTypes.STRING(100),
+          allowNull: false,
+        },
+        correct: {
+          type: DataTypes.STRING(50),
+          allowNull: false,
+        },
       },
       {
-        modelName: "ExamList",
-        tableName: "ExamList",
+        modelName: "ExamPaper",
+        tableName: "ExamPaper",
         paranoid: true,
         charset: "utf8",
         collate: "utf8_general_ci",
@@ -23,8 +31,6 @@ module.exports = class ExamList extends Model {
   }
 
   static associate(db) {
-    db.ExamList.belongsTo(db.User, { foreignKey: "UserId" });
-    db.ExamList.hasMany(db.ExamData, { foreignKey: "ExamListId" });
-    db.ExamList.hasMany(db.ExamResult, { foreignKey: "ExamListId" });
+    db.ExamPaper.belongsTo(db.ExamPaperList, { foreignKey: "ExamPaperListId" });
   }
 };

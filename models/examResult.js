@@ -22,6 +22,8 @@ module.exports = class ExamResult extends Model {
   }
 
   static associate(db) {
-    db.ExamResult.belongsTo(db.ExamList, { foreignKey: "ExamListId" });
+    db.ExamResult.belongsTo(db.ExamPaperList, {
+      foreignKey: "ExamPaperListId",
+    });
   }
 };
